@@ -1,0 +1,13 @@
+{
+    "architecture": "linux-amd64",
+    "deploy_command": "",
+    "description": "",
+    "logs_command": "tail -n 100 logs.txt",
+    "name": "opcua",
+    "os": "",
+    "protocol": "",
+    "start_command": "./start.sh -cb_service_account=opcuaAdapter",
+    "status_command": "",
+    "stop_command": "./stop.sh",
+    "undeploy_command": ""
+}
