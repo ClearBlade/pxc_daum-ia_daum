@@ -4,9 +4,8 @@
  * @param {CbServer.Resp} resp
  */
 
-function {{component_prefix}}_install(req, resp) {
+function pxc_daum_uninstall(req, resp) {
   const params = req.params;
-  const mfe_settings = params.mfe_settings;
-  //component install behavior here. Initialize an instance of the component for use
+  //component uninstall behavior here, undo any steps done in the install service
   resp.success('Success');
 }

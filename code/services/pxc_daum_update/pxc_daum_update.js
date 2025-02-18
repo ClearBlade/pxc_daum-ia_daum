@@ -4,8 +4,8 @@
  * @param {CbServer.Resp} resp
  */
 
-function {{component_prefix}}_teardown(req, resp) {
+function pxc_daum_update(req, resp) {
   const params = req.params;
-  //component teardown behavior here. Undo any setup done in the setup service
+  //component update behavior here. Allow the user to update an instance of the component
   resp.success('Success');
 }

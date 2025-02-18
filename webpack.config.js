@@ -16,9 +16,9 @@ module.exports = (webpackConfigEnv, argv) => {
       path: path.resolve(__dirname, "dist"),
     },
     entry: {
-      {{component_prefix}}_{{component_id}}: path.resolve(
+      pxc_daum_ia_daum: path.resolve(
         __dirname,
-        "mfe/{{component_prefix}}_{{component_id}}/index.tsx"
+        "mfe/pxc_daum_ia_daum/index.tsx"
       ),
     },
     externals: [

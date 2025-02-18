@@ -4,8 +4,8 @@
  * @param {CbServer.Resp} resp
  */
 
-function {{component_prefix}}_uninstall(req, resp) {
+function pxc_daum_setup(req, resp) {
   const params = req.params;
-  //component uninstall behavior here, undo any steps done in the install service
+  //component setup behavior here initialize any external databases, bucket sets, etc.
   resp.success('Success');
 }

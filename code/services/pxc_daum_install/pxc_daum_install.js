@@ -4,8 +4,9 @@
  * @param {CbServer.Resp} resp
  */
 
-function {{component_prefix}}_setup(req, resp) {
+function pxc_daum_install(req, resp) {
   const params = req.params;
-  //component setup behavior here initialize any external databases, bucket sets, etc.
+  const mfe_settings = params.mfe_settings;
+  //component install behavior here. Initialize an instance of the component for use
   resp.success('Success');
 }

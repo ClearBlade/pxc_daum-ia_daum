@@ -5,14 +5,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import singleSpaReact from "single-spa-react";
-import {{component_id}} from "./{{component_id}}";
+import ia_daum from "./ia_daum";
 
-function {{component_id}}Root(props) {
+function ia_daumRoot(props) {
   return (
     <AppProviders>
       <BrowserRouter basename={getBasePath()}>
         <Subscribe>
-          <{{component_id}} {...props} />
+          <ia_daum {...props} />
         </Subscribe>
       </BrowserRouter>
     </AppProviders>
@@ -22,7 +22,7 @@ function {{component_id}}Root(props) {
 const lifecycles = singleSpaReact({
   React,
   ReactDOM,
-  rootComponent: {{component_id}}Root,
+  rootComponent: ia_daumRoot,
   errorBoundary(err, info, props) {
     // Customize the root error boundary for your microfrontend here.
     return null;
