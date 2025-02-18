@@ -1,0 +1,19 @@
+{
+    "allow_certificate_auth": false,
+    "allow_key_auth": true,
+    "attached_proxies": [],
+    "bound_devices": [],
+    "cb_service_account": true,
+    "cb_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOi0xLCJpYXQiOjE3MjkxNDQ1NjMsInNpZCI6IjQxNjM1NGFmLTQwOWUtNDFiYi1iZTg2LWIwNTcyMTQ3ZDc0OCIsInR0IjoxLCJ1aWQiOiJjODlkODBmMTBjZmU5NTlkZmJlZWE1YjRmZTYxIDo6IG9wY3VhQWRhcHRlciIsInV0IjozfQ.QZuhSTaHnquxnMHD9Kfrsw7md9h_fOg1llyhfvIHJRk",
+    "cb_ttl_override": -1,
+    "certificate": "",
+    "connection": null,
+    "connections": null,
+    "description": "",
+    "enabled": true,
+    "is_device_proxy": false,
+    "name": "opcuaAdapter",
+    "proxy_authentication_method": "",
+    "state": "",
+    "type": ""
+}
