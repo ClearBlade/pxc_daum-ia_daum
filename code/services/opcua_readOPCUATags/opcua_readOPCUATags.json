@@ -1,0 +1,16 @@
+{
+    "auto_balance": true,
+    "auto_restart": null,
+    "concurrency": 1,
+    "dependencies": "log,mqtt,clearblade_async",
+    "execution_timeout": -1,
+    "log_ttl_minutes": 10080,
+    "logging_enabled": true,
+    "name": "opcua_readOPCUATags",
+    "params": [
+        ""
+    ],
+    "run_on_edge": true,
+    "run_on_platform": false,
+    "run_user": ""
+}
