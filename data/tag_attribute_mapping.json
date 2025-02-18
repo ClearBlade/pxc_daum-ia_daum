@@ -1,0 +1,30 @@
+{
+    "indexes": {
+        "Total": 1,
+        "Data": [
+            {
+                "name": "edge_id",
+                "type": "Unique Index"
+            }
+        ]
+    },
+    "items": [],
+    "name": "tag_attribute_mapping",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "edge_id",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "mappings",
+            "ColumnType": "jsonb",
+            "PK": false
+        }
+    ]
+}
