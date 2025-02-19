@@ -5,7 +5,7 @@
   "dependencies": "log",
   "execution_timeout": 60,
   "log_ttl_minutes": 10080,
-  "logging_enabled": false,
+  "logging_enabled": true,
   "name": "pxc_daum_teardown",
   "params": [""],
   "run_on_edge": true,
