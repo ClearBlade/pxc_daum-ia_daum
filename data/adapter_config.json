@@ -1,0 +1,40 @@
+{
+    "indexes": {
+        "Total": 0,
+        "Data": []
+    },
+    "items": [],
+    "name": "adapter_config",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "topic_root",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "adapter_settings",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "adapter_name",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "edge_name",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "adapter_type",
+            "ColumnType": "string",
+            "PK": false
+        }
+    ]
+}
