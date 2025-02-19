@@ -3,8 +3,8 @@
         {
             "asset_class": "adaptors",
             "asset_id": "opcua",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -12,8 +12,8 @@
         {
             "asset_class": "adapter_config",
             "asset_id": "",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -21,8 +21,8 @@
         {
             "asset_class": "asset_types",
             "asset_id": "",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -30,8 +30,8 @@
         {
             "asset_class": "tag_attribute_mapping",
             "asset_id": "",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -39,8 +39,8 @@
         {
             "asset_class": "devices",
             "asset_id": "opcuaAdapter",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -48,8 +48,8 @@
         {
             "asset_class": "services",
             "asset_id": "opcua_manageOPCUAAdapter",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -57,8 +57,8 @@
         {
             "asset_class": "services",
             "asset_id": "opcua_opcuaNormalizer",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
@@ -66,8 +66,8 @@
         {
             "asset_class": "services",
             "asset_id": "opcua_readOPCUATags",
-            "deployment": "jim_opcua-test",
-            "member": "jim_opcua-test_deployment_edge_group",
+            "deployment": "opcua",
+            "member": "opcua_deployment_edge_group",
             "sync_schema_only": false,
             "sync_to_edge": true,
             "sync_to_platform": false
