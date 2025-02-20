@@ -25,7 +25,7 @@ function opcua_readOPCUATags(req, resp) {
   function adapter_configPoll() {
     try {
       const database = ClearBladeAsync.Database();
-      var edgeId = "42-01-0a-80-00-05";
+      var edgeId = ClearBlade.edgeId();
       const rawQuery =
         "select * from adapter_config where edge_name='" + edgeId + "';";
       log(rawQuery);
