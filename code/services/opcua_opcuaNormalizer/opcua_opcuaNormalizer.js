@@ -14,7 +14,7 @@
 
 function opcua_opcuaNormalizer(req, resp) {
   const edgeID = ClearBlade.edgeId();
-  const ADAPTER_CONFIG_TRIGGER_TOPIC = '$share/tagmapping/$trigger/data/+';
+  const TRIGGER_TOPIC = '$share/tagmapping/$trigger/data/+';
   const TAGS_COLLECTION = ClearBladeAsync.Collection('tag_attribute_mapping');
 
   const OPC_UA_READ_TOPIC = "$share/opcua_adapter/opcua/read/response";
@@ -33,12 +33,7 @@ function opcua_opcuaNormalizer(req, resp) {
   // max time between publishing updates for attributes in IA if their value has not changed
   const MAX_DURATION_BETWEEN_UPDATES_IN_MINUTES = 5;
   
-  var cbClient;
-  try {
-    cbClient = new MQTT.Client();
-  } catch (e) {
-    resp.error('failed to connect to mqtt broker: ' + e);
-  }
+  const cbClient = new MQTT.Client();
   
   var tagToAssetMap = null;
   var assetTypes = null;
@@ -86,13 +81,13 @@ function opcua_opcuaNormalizer(req, resp) {
   
   /**
    * Inspect the data trigger
-   * Determine if the trigger data needs to be sync'd to the platform or edge
+   * Determine if the trigger needs to be handled
    */
   function handleTrigger(topic, msg) {
     const payload = JSON.parse(msg.payload);
     switch(payload.collectionName) {
       case 'tag_attribute_mapping':
-        console.debug("Trigger for adapter_config collection received. Retrieving asset map.");
+        console.debug("Trigger for tag_attribute_mapping collection received. Retrieving asset map.");
         getAssetMap();
         break;
       case 'asset_types':
@@ -210,8 +205,8 @@ function opcua_opcuaNormalizer(req, resp) {
       resp.error('failed to subscribe to opcua read topic: ' + reason);
     });
 
-    console.log("subscribing to topic: " + ADAPTER_CONFIG_TRIGGER_TOPIC);
-    cbClient.subscribe(ADAPTER_CONFIG_TRIGGER_TOPIC, handleTrigger).catch(function(reason) {
+    console.log("subscribing to topic: " + TRIGGER_TOPIC);
+    cbClient.subscribe(TRIGGER_TOPIC, handleTrigger).catch(function(reason) {
       console.error('failed to subscribe to trigger topic:', reason);
       resp.error('failed to subscribe to trigger topic: ' + reason);
     });
