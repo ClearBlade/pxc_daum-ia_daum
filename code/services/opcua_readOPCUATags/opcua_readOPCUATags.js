@@ -14,23 +14,19 @@
 
 function opcua_readOPCUATags(req, resp) {
   const client = new MQTT.Client();
-  const staticPollMillis = 300000;
   const readBatchSize = 50;
   var existingTags = [];
   var intervalIDs = [];
 
-  //leave as is, static
-  //setInterval(adapter_configPoll, staticPollMillis);
+  const TRIGGER_TOPIC = '$share/readOPCUATags/$trigger/data/+';
 
   function adapter_configPoll() {
     try {
       const database = ClearBladeAsync.Database();
       var edgeId = ClearBlade.edgeId();
-      const rawQuery =
-        "select * from adapter_config where edge_name='" + edgeId + "';";
+      const rawQuery = "select * from adapter_config where edge_name='" + edgeId + "';";
       log(rawQuery);
-      database
-        .query(rawQuery)
+      database.query(rawQuery)
         .then(function (res) {
           if (res.length > 0) {
             if (JSON.parse(res[0].adapter_settings).tags !== undefined) {
@@ -42,21 +38,15 @@ function opcua_readOPCUATags(req, resp) {
                 var sortedTags = {};
 
                 //convert tags to object array with poll rate as key, and each
-                for (var i = 0; i < newTags.length; i++) {
-                  if (newTags[i].read_method.type === "polling") {
-                    if (
-                      !sortedTags.hasOwnProperty(newTags[i].read_method.rate)
-                    ) {
-                      sortedTags[newTags[i].read_method.rate] = [
-                        newTags[i].node_id,
-                      ];
+                newTags.forEach(function(tag, ndx) {
+                  if (tag.read_method.type === "polling") {
+                    if (!sortedTags.hasOwnProperty(tag.read_method.rate)) {
+                      sortedTags[tag.read_method.rate] = [tag.node_id,];
                     } else {
-                      sortedTags[newTags[i].read_method.rate].push(
-                        newTags[i].node_id
-                      );
+                      sortedTags[tag.read_method.rate].push(tag.node_id);
                     }
                   }
-                }
+                })
 
                 //clear each existing interval, if there are any
                 if (intervalIDs.length > 0) {
@@ -67,15 +57,8 @@ function opcua_readOPCUATags(req, resp) {
                 //for each object key, setInterval to key
                 for (var key in sortedTags) {
                   //setInterval for each different poll rate
-                  log(
-                    "setting interval of: " +
-                      key +
-                      " for node Ids: " +
-                      sortedTags[key]
-                  );
-                  intervalIDs.push(
-                    setInterval(opcuaPoll, key * 1000, sortedTags[key])
-                  );
+                  log("setting interval of: " + key + " for node Ids: " + sortedTags[key]);
+                  intervalIDs.push(setInterval(opcuaPoll, key * 1000, sortedTags[key]));
                 }
               } else {
                 log("no changes to adapter_config tags");
@@ -96,6 +79,25 @@ function opcua_readOPCUATags(req, resp) {
       resp.error(e.stack);
     }
   }
+
+  /**
+   * Inspect the data trigger
+   * Determine if the trigger needs to be handled
+   */
+  function handleTrigger(topic, msg) {
+    const payload = JSON.parse(msg.payload);
+    switch(payload.collectionName) {
+      case 'adapter_config':
+        console.debug("Trigger for adapter_config collection received. Retrieving asset map.");
+        adapter_configPoll();
+        break;
+    }
+  }
+
+  client.subscribe(TRIGGER_TOPIC, handleTrigger).catch(function(reason) {
+    console.error('failed to subscribe to trigger topic:', reason);
+    resp.error('failed to subscribe to trigger topic: ' + reason);
+  });
 
   adapter_configPoll();
 
