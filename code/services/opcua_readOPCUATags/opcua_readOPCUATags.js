@@ -88,7 +88,7 @@ function opcua_readOPCUATags(req, resp) {
     const payload = JSON.parse(msg.payload);
     switch(payload.collectionName) {
       case 'adapter_config':
-        console.debug("Trigger for adapter_config collection received. Retrieving asset map.");
+        console.debug("Trigger for adapter_config collection received. Configuring adapter polling.");
         adapter_configPoll();
         break;
     }
