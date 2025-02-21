@@ -10,8 +10,42 @@
 function pxc_daum_teardown(req, resp) {
   const params = req.params;
 
-  console.debug(params);
+  function removePermissionsFromRole(roleId) {
+    return ClearBladeAsync.Role(roleId).setPermissions([
+      {
+        "type": "service",
+        "name": "checkEdgeDeviceStatus",
+        "level": 0
+      },
+      {
+        "type": "service",
+        "name": "createOpcuaMap",
+        "level": 0
+      },
+      {
+        "type": "dashboard",
+        "name": "opcua_mapper",
+        "level": 0
+      }
+    ])
+}
 
-  //component teardown behavior here. Undo any setup done in the setup service
-  resp.success('Success');
+  //Remove execute permissions from editor and administrator roles for checkEdgeDeviceStatus and createOpcuaMap
+  //Remove opcua portal permissions from editor and administrator roles
+  ClearBladeAsync.Roles().read(ClearBladeAsync.Query().equalTo("name", "Administrator").or(ClearBladeAsync.Query().equalTo("name", "Editor")))
+  .then(function(data) {
+    return Promise.all(data
+      .map(function (role) {
+        console.debug("Applying permissions for role " + role.name);
+        return removePermissionsFromRole(role.role_id);
+      }));
+  })
+  .then(function (results) {
+    console.debug(results);
+    resp.success('Success');
+  })
+  .catch(function (error) {
+    console.error("Error applying permissions to roles: " + JSON.stringify(error));
+    resp.error("Error applying permissions to roles: " + JSON.stringify(error));
+  });
 }
