@@ -5,13 +5,12 @@
   "image_url": "https://docs.clearblade.com/v/4/static/img/default_package.png",
   "keywords": [],
   "license": "MIT",
-  "name": "ia-components",
+  "name": "@clearblade/pxc_daum",
   "private": false,
   "version": "1.0.0",
-  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClearBlade/components-template.git"
+    "url": "git+https://github.com:ClearBlade/pxc_daum-ia_daum.git"
   },
   "scripts": {
     "build:library": "rspack build -c cb-dev-kit/rspack.config.js --config-name library",
