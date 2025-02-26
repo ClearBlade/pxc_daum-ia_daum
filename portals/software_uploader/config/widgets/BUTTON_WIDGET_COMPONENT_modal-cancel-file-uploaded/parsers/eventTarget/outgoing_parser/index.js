@@ -1,0 +1,1 @@
+CB_PORTAL.Modals.close("file-uploaded")

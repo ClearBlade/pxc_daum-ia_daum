@@ -1,0 +1,43 @@
+<div class="page">
+  <h2>Upload Firmware/Software File</h2>
+
+  <div class="form">
+    <div class="group">
+      <label for="device-types">Device Type:</label>
+      <select name="device-types" id="device-types">
+      </select>
+
+      <div class='error' id='no-device-types-error'>No device types exist. Edit asset types in Intelligent Assets and specify add the Device Type to the Asset Type</div>
+      <div class='error' id='device-type-reqd-error'>Device type is required. You must select a device type to associate the upload with.</div>
+    </div>
+
+    <div class="group">
+      <label for="software-name">Software Name:</label>
+      <input
+        id="software-name"
+        type="text"
+        name="software-name"
+        required/>
+      <div class='error' id='software-name-error'>Software name must be specified. The software name should be used to distinguish software/firmware packages when more than one software/firmware package is installed on the device.</div>
+    </div>
+    <div class="group">
+      <label for="version">Version Number (semver format):</label>
+      <input
+        id="version"
+        type="text"
+        name="version"
+        required/>
+      <div class='error' id='version-error'>Invalid format. Version numbers should follow the semver format: xxx.yyy.zzz (1.0.147)</div>
+    </div>
+    <div class="group">
+      <label for="file-name">File Name:</label>
+      <input
+        id="file-name"
+        type="file"
+        name="file-name"
+        required />
+      <div class='error' id='filename-error'>No file selected. You must select a file to upload.</div>
+    </div>
+  </div>
+  <button id='save-btn' class='styledButton' name="submit">Save</button>
+</div>
