@@ -20,7 +20,7 @@
   align-items: center;
 }
 
-.group input, group select {
+.group input, .group select {
   width: 250px;
   border: 1px solid rgb(116, 115, 115);
   padding-left: 3px;

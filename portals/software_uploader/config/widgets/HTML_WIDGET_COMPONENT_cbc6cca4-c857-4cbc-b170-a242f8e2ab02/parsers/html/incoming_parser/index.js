@@ -12,31 +12,32 @@ const BUCKET_API_PATH = "/api/v/4/bucket_sets/{systemKey}/{bucketSetName}/file/c
 const FILE_PATH = "components/" + IA_COMPONENT_NAME + "/firmware/{device_type}/{version}";
 
 function populateDeviceTypes() {
-    var deviceTypes = datasources["asset_types"].incomingData;
+    if(datasources["asset_types"].lastUpdated) {
+        var deviceTypes = datasources["asset_types"].latestData();
 
-    $("#device-types").empty();
+        $("#device-types").empty();
 
-    //Add a blank option
-    $("#device-types").append(
-                    '<option value=""></option>');
+        //Add a blank option
+        $("#device-types").append('<option value=""></option>');
 
-    if (deviceTypes.length > 0) {
-        $("#no-device-types-error").hide();
-        $("#device-types").removeClass('error');
+        if (deviceTypes && deviceTypes.length > 0) {
+            $("#no-device-types-error").hide();
+            $("#device-types").removeClass('error');
 
-        datasources["asset_types"].incomingData.forEach(function(assetType){
-            if (assetType.data.device_type) {
-                $("#device-types").append(
-                    '<option value="' + 
-                    assetType.data.device_type +
-                    '">' + 
-                    assetType.data.label +
-                    '</option>');
-            }
-        });
-    } else {
-        $("#device-types").addClass('error');
-        $("#no-device-types-error").show();
+            datasources["asset_types"].incomingData.forEach(function(assetType){
+                if (assetType.data.device_type) {
+                    $("#device-types").append(
+                        '<option value="' + 
+                        assetType.data.device_type +
+                        '">' + 
+                        assetType.data.label +
+                        '</option>');
+                }
+            });
+        } else {
+            $("#device-types").addClass('error');
+            $("#no-device-types-error").show();
+        }
     }
 }
 
@@ -107,15 +108,11 @@ function allFieldsAreValid() {
 
 function readFile(file) {
     return new Promise(function (resolve, reject){
-        console.log("Reading file contents");
-
         var reader = new FileReader();
 
         reader.onload = (evt) => {
             if (typeof evt.target.result === 'string') {
                 var contents = evt.target.result.slice(evt.target.result.indexOf(',') + 1);
-                console.log("File contents");
-                console.log(contents);
 
                 resolve(contents);
             } else {
@@ -231,11 +228,8 @@ function saveFile () {
 
 
 function handleSaveBtnClick() {
-    console.log("In click handler");
-    console.log(allFieldsAreValid());
     if (allFieldsAreValid()) {
         //Save file data
-        console.log("Invoking saveFile")
         saveFile();
     }
 }
@@ -258,9 +252,13 @@ function resetFormFields() {
 }
 
 parser = (ctx) => {
-  resetFormFields();
-  populateDeviceTypes();
-  $('#save-btn').off('click');
-  $('#save-btn').click(handleSaveBtnClick);
+    datasources["asset_types"].refresh();
+    resetFormFields();
+
+    //datasources["asset_types"].latestData.unsubscribe(populateDeviceTypes)
+    datasources["asset_types"].latestData.subscribe(populateDeviceTypes)
+	
+    $('#save-btn').off('click');
+    $('#save-btn').click(handleSaveBtnClick);
   
 }
