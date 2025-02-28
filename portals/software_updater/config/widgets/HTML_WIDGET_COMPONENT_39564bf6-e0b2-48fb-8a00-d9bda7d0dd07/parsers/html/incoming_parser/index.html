@@ -30,7 +30,7 @@
 					<input id="install-timestamp" name="install-time" type="datetime-local"></input>
 				</div>
 				<div id="device-table-div" class="group table">
-					<label>Select the devices you wish to install the software/firmware on:</label>
+					<p><h4>Select the devices to install the software/firmware on:</h4></p>
 					<table id="assets-table">
 						<thead>
 							<tr>
@@ -48,8 +48,8 @@
 			<button id='submit-btn' class='styledButton' name="submit">Submit</button>
 		</div>
 		<div class="column">
-			<h2>Currently Installed Versions</h2>
-			<div id="install-table-div" class="group table">
+			<div id="install-table-div" class="group">
+				<h2>Currently Installed Versions</h2>
 				<table id="install-table">
 					<thead>
 						<tr>
@@ -65,8 +65,9 @@
 			<div id="no-installs-msg">
 				<p>No devices have the currently selected software package installed</p>
 			</div>
-			<h2>Scheduled Installs</h2>
+
 			<div id="schedule-table-div" class="group table">
+				<h2>Scheduled Installs</h2>
 				<table id="schedule-table">
 					<thead>
 						<tr>

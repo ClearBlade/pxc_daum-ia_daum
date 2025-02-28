@@ -1,5 +1,6 @@
 .page {
   width: 100%;
+  margin-left: 25px;
 }
 
 .column {
@@ -13,22 +14,22 @@
   clear: both;
 }
 
-.form {
-  width: 100%;
-}
-
- .group {
+ /* .group {
   display: flex;
   flex-wrap: wrap; 
   margin-top: 4px;
 }
-
+*/
 .group label {
-  display: flex;
+  /* display: flex; */
   width: 50%;
   line-height: 30px;
   justify-content: right;
   align-items: center;
+}
+
+.table {
+  margin-top: 25px;
 }
 
 .group input, .group select {

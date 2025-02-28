@@ -176,33 +176,28 @@ function populateCurrentlyInstalled() {
 }
 
 function populateScheduledInstalls() {
-    if(datasources["device_software_install_status"].lastUpdated) {
+    if(datasources["device_software_scheduled"].lastUpdated) {
         $("#schedule-table-body").empty();
 
-        var installs = datasources["device_software_scheduled"].latestData();
-        var schedules = datasources["device_software_install_status"].latestData();
+        var schedules = datasources["device_software_scheduled"].latestData();
         var assets = datasources["assets"].latestData();
 
         if (schedules.length > 0) {
-            $('#schedule-table-div').show();
+            $('#schedule-table').show();
             $('#no-schedules-msg').hide();
 
             schedules.forEach(function(schedule) {
                 // Create a new row with data 
-                var install = installs.find(function(install) {
-                    return install.data.id = schedule.data.id;
-                });
-
                 var asset = assets.find(function(asset) {
-                    return asset.data.id = install.data.asset_id;
+                    return asset.data.id = schedule.data.asset_id;
                 });
 
                 var newRow = 
                 '<tr>' + 
                     '<td>' + asset.data.label + '</td>' + 
-                    '<td>' + new Date(schedule.data.timestamp).toLocaleString() + '</td>' + 
+                    '<td>' + new Date(schedule.data.installation_date).toLocaleString() + '</td>' + 
                     '<td>' + schedule.data.status.toUpperCase() + '</td>' + 
-                    '<td>' + schedule.data.description + '</td>' + 
+                    '<td>' + schedule.data.status + '</td>' + 
                 '</tr>'; 
                  
                 // Append the new row to the table body 
@@ -212,7 +207,7 @@ function populateScheduledInstalls() {
                 $('input:checkbox').change(handleCheckboxChange);
             });
         } else {
-            $('#schedule-table-div').hide();
+            $('#schedule-table').hide();
             $('#no-schedules-msg').show();
         }
     }
@@ -276,6 +271,7 @@ function handleSubmitBtnClick() {
             "softwareName": $('#install-name').val(),
             "version": $('#install-version').val(),
             "install_timestamp": new Date($('#install-timestamp').val()).toISOString(),
+            "userId": CB_PORTAL.ClearBlade.user.email,
             "assets": []
         }
 
@@ -327,15 +323,18 @@ function handleSoftwareNameChange(event) {
     datasources["device_software_installed"].sendData({
         "query": CB_PORTAL.ClearBlade.Query()
             .equalTo("software_descriptor", $("#install-name").val())
+            .equalTo("status", "complete")
             .ascending('asset_id')
+            .descending('version')
     });
 
-    // datasources["device_software_install_status"].sendData({
-    //     "query": CB_PORTAL.ClearBlade.Query()
-    //         .equalTo("device_type", $("#device-types").val())
-    //         .equalTo("name", $("#install-name").val())
-    //         .descending('version')
-    // });
+    datasources["device_software_scheduled"].sendData({
+        "query": CB_PORTAL.ClearBlade.Query()
+            .equalTo("software_descriptor", $("#install-name").val())
+            .equalTo("status", "pending")
+            .ascending('asset_id')
+            .descending('version')
+    });
 }
 
 function handleSoftwareVersionChange(event) {
@@ -387,7 +386,7 @@ parser = (ctx) => {
     datasources["software_names"].latestData.subscribe(populateSoftwareNames);
 	datasources["software_versions"].latestData.subscribe(populateSoftwareVersions);
     datasources["device_software_installed"].latestData.subscribe(populateCurrentlyInstalled);
-	datasources["device_software_install_status"].latestData.subscribe(populateScheduledInstalls);
+	datasources["device_software_scheduled"].latestData.subscribe(populateScheduledInstalls);
 
     //Add event listeners
     $('#device-types').off('change');
