@@ -1,0 +1,13 @@
+{
+    "id": "719da777-9dee-45c8-881c-6ed9ce6b84bd",
+    "name": "device_software_scheduled",
+    "settings": {
+        "CALL_ON_LOAD": false,
+        "DATASOURCE_PARSER": "/**\n* The 'parser' variable is the entry point for your parser. Write logic inside of the provided function and return a value\n* Constants and utility functions can be created outside of the parser\n* The provided ctx parameter is an object that contains data and model information on this item\n* @param {context} ctx \n* @returns {rtn} */\nparser = (ctx) =\u003e {\n  return ctx.data\n}",
+        "SUPPRESS_DATASOURCE_ERRORS": false,
+        "USE_PARSER": false,
+        "collection_name": "device_software_installed",
+        "refresh_interval": 0
+    },
+    "type": "CB_COLLECTION"
+}

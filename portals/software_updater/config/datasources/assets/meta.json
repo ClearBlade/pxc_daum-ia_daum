@@ -1,0 +1,13 @@
+{
+    "id": "fad76fc9-112a-49da-b74f-1479f5f1cd35",
+    "name": "assets",
+    "settings": {
+        "CALL_ON_LOAD": true,
+        "DATASOURCE_PARSER": "/**\n* The 'parser' variable is the entry point for your parser. Write logic inside of the provided function and return a value\n* Constants and utility functions can be created outside of the parser\n* The provided ctx parameter is an object that contains data and model information on this item\n* @param {context} ctx \n* @returns {rtn} */\nparser = (ctx) =\u003e {\n  return ctx.data\n}",
+        "SUPPRESS_DATASOURCE_ERRORS": true,
+        "USE_PARSER": false,
+        "collection_name": "assets",
+        "refresh_interval": 0
+    },
+    "type": "CB_COLLECTION"
+}

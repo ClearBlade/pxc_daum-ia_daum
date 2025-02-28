@@ -1,0 +1,13 @@
+{
+    "id": "cc1c7e75-06cd-4550-89ae-24978557fc77",
+    "name": "asset_types",
+    "settings": {
+        "CALL_ON_LOAD": true,
+        "DATASOURCE_PARSER": "./parser.js",
+        "SUPPRESS_DATASOURCE_ERRORS": true,
+        "USE_PARSER": true,
+        "collection_name": "asset_types",
+        "refresh_interval": 0
+    },
+    "type": "CB_COLLECTION"
+}
