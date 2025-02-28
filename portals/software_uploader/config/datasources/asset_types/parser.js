@@ -5,7 +5,10 @@
 * @param {context} ctx 
 * @returns {rtn} */
 parser = (ctx) => {
-  return ctx.data.sort(function(a, b){
+  return ctx.data.filter(function(assetType){
+    return assetType.data.device_type ? true: false;
+  })
+  .sort(function(a, b){
     if (a.data.device_type < b.data.device_type) return -1;
     if (a.data.device_type > b.data.device_type) return 1;
     return 0;
