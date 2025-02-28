@@ -1,1 +1,0 @@
-CB_PORTAL.Modals.close("UserInfoModal")
