@@ -12,8 +12,6 @@ function pxc_daum_setup(req, resp) {
   const params = req.params;
 
   function applyPermissionsToRole(roleId) {
-    //TODO - Add collection permissions
-    //Add topic (publish) permissions
       return ClearBladeAsync.Role(roleId).setPermissions([
         {
           "type": "service",
@@ -29,22 +27,12 @@ function pxc_daum_setup(req, resp) {
           "type": "dashboard",
           "name": "opcua_mapper",
           "level": ClearBladeAsync.Permissions.READ
-        },
-        {
-          "type": "dashboard",
-          "name": "software_updater",
-          "level": ClearBladeAsync.Permissions.READ
-        },
-        {
-          "type": "dashboard",
-          "name": "software_uploader",
-          "level": ClearBladeAsync.Permissions.READ
         }
       ])
   }
 
   //Add execute permissions to editor and administrator roles for checkEdgeDeviceStatus and createOpcuaMap
-  //Add opcua portal permissions to editor and administrator roles
+  //Add portal permissions to editor and administrator roles
   ClearBladeAsync.Roles().read(ClearBladeAsync.Query().equalTo("name", "Administrator").or(ClearBladeAsync.Query().equalTo("name", "Editor")))
   .then(function(data) {
     return Promise.all(data
@@ -56,7 +44,6 @@ function pxc_daum_setup(req, resp) {
   .then(function (results) {
 
     //TODO - Add portals to external links in system_info
-
 
     console.debug(results);
     resp.success('Success');

@@ -26,12 +26,22 @@ function pxc_daum_teardown(req, resp) {
         "type": "dashboard",
         "name": "opcua_mapper",
         "level": 0
+      },
+      {
+        "type": "dashboard",
+        "name": "software_updater",
+        "level": 0
+      },
+      {
+        "type": "dashboard",
+        "name": "software_uploader",
+        "level": 0
       }
     ])
 }
 
   //Remove execute permissions from editor and administrator roles for checkEdgeDeviceStatus and createOpcuaMap
-  //Remove opcua portal permissions from editor and administrator roles
+  //Remove portal permissions from editor and administrator roles
   ClearBladeAsync.Roles().read(ClearBladeAsync.Query().equalTo("name", "Administrator").or(ClearBladeAsync.Query().equalTo("name", "Editor")))
   .then(function(data) {
     return Promise.all(data
@@ -41,6 +51,8 @@ function pxc_daum_teardown(req, resp) {
       }));
   })
   .then(function (results) {
+    //TODO - Remove portals from external links in system_info
+
     console.debug(results);
     resp.success('Success');
   })
