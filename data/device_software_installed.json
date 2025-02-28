@@ -1,0 +1,60 @@
+{
+    "indexes": {
+        "Total": 1,
+        "Data": [
+            {
+                "name": "software_descriptor",
+                "type": "Nonunique Index"
+            }
+        ]
+    },
+    "items": [],
+    "name": "device_software_installed",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "install_request_date",
+            "ColumnType": "timestamp",
+            "PK": false
+        },
+        {
+            "ColumnName": "installation_date",
+            "ColumnType": "timestamp",
+            "PK": false
+        },
+        {
+            "ColumnName": "user_id",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "asset_id",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "software_descriptor",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "version",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "id",
+            "ColumnType": "uuid",
+            "PK": false
+        },
+        {
+            "ColumnName": "status",
+            "ColumnType": "string",
+            "PK": false
+        }
+    ]
+}

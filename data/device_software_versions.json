@@ -1,0 +1,131 @@
+{
+    "indexes": {
+        "Total": 0,
+        "Data": []
+    },
+    "items": [
+        {
+            "device_type": "edge",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/edge/2.0.4",
+            "item_id": "091df504-478b-41c6-89ae-37b21a18c808",
+            "name": "Edge Firmware",
+            "upload_date": "2025-02-27T22:23:38.154Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "2.0.4"
+        },
+        {
+            "device_type": "device",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/device/1.4.5",
+            "item_id": "22a0f958-f3b9-4a13-bda1-e775c1286aa1",
+            "name": "curl",
+            "upload_date": "2025-02-27T22:30:30.364Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "1.4.5"
+        },
+        {
+            "device_type": "edge",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/edge/10.9.98",
+            "item_id": "6b491c72-645d-42b1-a0a7-e114e3048567",
+            "name": "Edge OS",
+            "upload_date": "2025-02-27T22:24:21.84Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "10.9.98"
+        },
+        {
+            "device_type": "device",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/device/7.98.9",
+            "item_id": "752cc7f2-c3f8-431d-b114-fd19eb3658f9",
+            "name": "curl",
+            "upload_date": "2025-02-27T22:30:51.022Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "7.98.9"
+        },
+        {
+            "device_type": "edge",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/edge/1.0.0",
+            "item_id": "760d7163-4d58-45b9-8a8b-5bae5052bd5c",
+            "name": "Edge Firmware",
+            "upload_date": "2025-02-27T22:23:23.855Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "1.0.0"
+        },
+        {
+            "device_type": "sim_card",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/sim_card/1.0.1",
+            "item_id": "85e70377-2d6b-4a6d-9082-59ecc1415be3",
+            "name": "Firmware",
+            "upload_date": "2025-02-27T15:43:13.603Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "1.0.1"
+        },
+        {
+            "device_type": "edge",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/edge/3.7.4",
+            "item_id": "bc2167dd-e9f6-4cb6-b87d-649920c04b99",
+            "name": "Edge OS",
+            "upload_date": "2025-02-27T22:24:04.988Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "3.7.4"
+        },
+        {
+            "device_type": "device",
+            "file_name": "bbq.txt",
+            "file_path": "components/daum/firmware/device/2.6.9",
+            "item_id": "cdf609be-fa35-4223-aac5-03272ddd8459",
+            "name": "curl",
+            "upload_date": "2025-02-27T22:30:39.914Z",
+            "upload_user": "jbouquet@clearblade.com",
+            "version": "2.6.9"
+        }
+    ],
+    "name": "device_software_versions",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "device_type",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "name",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "version",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "file_name",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "file_path",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "upload_date",
+            "ColumnType": "timestamp",
+            "PK": false
+        },
+        {
+            "ColumnName": "upload_user",
+            "ColumnType": "string",
+            "PK": false
+        }
+    ]
+}

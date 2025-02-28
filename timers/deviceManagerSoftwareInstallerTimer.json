@@ -1,0 +1,8 @@
+{
+    "description": "",
+    "frequency": 60,
+    "name": "deviceManagerSoftwareInstallerTimer",
+    "repeats": -1,
+    "service_name": "deviceManagerSoftwareInstaller",
+    "start_time": "2025-02-28T17:31:02.615Z"
+}

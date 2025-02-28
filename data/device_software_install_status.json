@@ -1,0 +1,40 @@
+{
+    "indexes": {
+        "Total": 1,
+        "Data": [
+            {
+                "name": "status",
+                "type": "Nonunique Index"
+            }
+        ]
+    },
+    "items": [],
+    "name": "device_software_install_status",
+    "schema": [
+        {
+            "ColumnName": "item_id",
+            "ColumnType": "uuid",
+            "PK": true
+        },
+        {
+            "ColumnName": "id",
+            "ColumnType": "uuid",
+            "PK": false
+        },
+        {
+            "ColumnName": "timestamp",
+            "ColumnType": "timestamp",
+            "PK": false
+        },
+        {
+            "ColumnName": "status",
+            "ColumnType": "string",
+            "PK": false
+        },
+        {
+            "ColumnName": "description",
+            "ColumnType": "string",
+            "PK": false
+        }
+    ]
+}
