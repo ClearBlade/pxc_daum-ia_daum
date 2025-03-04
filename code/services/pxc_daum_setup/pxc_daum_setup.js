@@ -42,9 +42,6 @@ function pxc_daum_setup(req, resp) {
       }));
   })
   .then(function (results) {
-
-    //TODO - Add portals to external links in system_info
-
     console.debug(results);
     resp.success('Success');
   })

@@ -51,8 +51,6 @@ function pxc_daum_teardown(req, resp) {
       }));
   })
   .then(function (results) {
-    //TODO - Remove portals from external links in system_info
-
     console.debug(results);
     resp.success('Success');
   })
