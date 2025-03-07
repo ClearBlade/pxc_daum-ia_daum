@@ -1,3 +1,16 @@
 {
-    "columns": null
+    "columns": [
+        {
+            "ColumnName": "connection",
+            "ColumnType": "string",
+            "PK": false,
+            "UserDefined": true
+        },
+        {
+            "ColumnName": "connections",
+            "ColumnType": "string",
+            "PK": false,
+            "UserDefined": true
+        }
+    ]
 }
